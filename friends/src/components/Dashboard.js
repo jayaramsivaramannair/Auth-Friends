@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import FriendCard from '../components/FriendCard';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Dashboard = (props) => {
@@ -32,6 +32,9 @@ const Dashboard = (props) => {
         <div>
             <div>
                 <button onClick={logout}>Logout</button>
+                <Link to="/dashboard/addFriend">
+                    Add a New Friend
+                </Link>
             </div>
             Hello from Dashboard!
             {friends &&

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 const FriendCard = (props) => {
-
     const { url } = useRouteMatch();
     console.log(url);
     const { friend } = props;

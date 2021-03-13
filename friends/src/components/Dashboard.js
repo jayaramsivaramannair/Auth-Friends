@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import FriendCard from '../components/FriendCard';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const history = useHistory();
+    const { friends, setFriends } = props;
 
-    const [friends, setFriends] = useState([]);
+    //const [friends, setFriends] = useState([]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -21,10 +22,10 @@ const Dashboard = () => {
                 setFriends(res.data);
             })
             .catch(err => console.log(err));
-    }, [])
+    }, [setFriends])
 
     if (friends.length === 0) {
-        return <div>Fetching Friends....</div>
+        return <div>Fetching Friends.....</div>
     }
 
     return (

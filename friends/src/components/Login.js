@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -7,6 +9,7 @@ const Login = () => {
     })
 
     const [logging, setLogging] = useState(false);
+    const history = useHistory();
 
     const formChange = (evt) => {
         console.log(evt.target.name, evt.target.value);
@@ -16,7 +19,12 @@ const Login = () => {
     const formSubmit = (evt) => {
         evt.preventDefault();
         setLogging(true);
-        console.log(form);
+        axios.post('http://localhost:5000/api/login', form)
+            .then(res => {
+                console.log(res);
+                localStorage.setItem('authToken', res.data.payload);
+                history.push('/dashboard');
+            })
         setForm({ ...form, username: '', password: '' });
         setLogging(false);
     }

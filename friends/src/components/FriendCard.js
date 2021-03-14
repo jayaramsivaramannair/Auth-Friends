@@ -13,6 +13,7 @@ const FriendCard = (props) => {
             <Link to={`${url}/${friend.id}`} style={{ textDecoration: 'none', fontStyle: 'italic' }}>
                 Get Details
             </Link>
+
         </Container>
     )
 }
@@ -24,7 +25,10 @@ const Container = styled.div`
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
 `
+
 
 
 //Characters Avatars used from : https://avatars.dicebear.com/docs/installation

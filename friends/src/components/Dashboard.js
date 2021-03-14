@@ -39,7 +39,7 @@ const Dashboard = (props) => {
             </Container>
             {friends &&
                 friends.map((friend) => {
-                    return <FriendCard key={friend.id} friend={friend} />
+                    return <FriendCard key={friend.id} friend={friend} friends={friends} setFriends={setFriends} />
                 })
             }
         </div>

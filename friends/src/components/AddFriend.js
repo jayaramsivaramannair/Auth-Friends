@@ -11,6 +11,7 @@ const AddFriend = (props) => {
     })
 
     const history = useHistory();
+    const { setFriends } = props;
 
     const formChange = (evt) => {
         console.log(evt.target.name, evt.target.value);
@@ -24,7 +25,13 @@ const AddFriend = (props) => {
                 console.log(res.data);
             })
         setNewFriend({ ...newFriend, name: '', age: '', email: '' });
+        setFriends([]);
         history.push('/dashboard');
+    }
+
+    const returnToDashboardFunction = () => {
+        history.push('/dashboard');
+        setFriends([]);
     }
 
     return (
@@ -59,7 +66,7 @@ const AddFriend = (props) => {
                 </label>
                 <Button>I Love Making Friends</Button>
             </Form>
-            <Button onClick={() => history.push('/dashboard')}>Back To Dashboard</Button>
+            <Button onClick={returnToDashboardFunction}>Back To Dashboard</Button>
         </Container>
     )
 }

@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const FriendDetails = (props) => {
     const { friendId } = useParams();
+    const { setFriends } = props;
     console.log(friendId);
 
     const [details, setDetails] = useState({});
@@ -12,6 +13,17 @@ const FriendDetails = (props) => {
     const history = useHistory();
 
     const returnToDashboard = () => {
+        history.push("/dashboard");
+        setFriends([]);
+    }
+
+    const deleteFunction = (evt) => {
+        evt.preventDefault();
+        axiosWithAuth().delete(`/friends/${friendId}`)
+            .then((res) => {
+                console.log(res.data);
+                setFriends([]);
+            })
         history.push("/dashboard");
     }
 
@@ -29,6 +41,7 @@ const FriendDetails = (props) => {
             <h3>{details.name}</h3>
             <h4><Italicized>Age:</Italicized>{details.age}</h4>
             <h4><Italicized>Email:</Italicized> {details.email}</h4>
+            <DeleteLink href=" " onClick={deleteFunction}>Delete</DeleteLink>
             <Button onClick={returnToDashboard}>Back To Dashboard</Button>
         </Container>
     )
@@ -52,4 +65,9 @@ const Italicized = styled.span`
 
 const Button = styled.button`
     font-family: 'Playfair Display', serif;
+`
+
+const DeleteLink = styled.a`
+    text-decoration: none;
+    font-style: italic;
 `

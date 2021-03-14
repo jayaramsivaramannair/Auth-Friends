@@ -20,8 +20,8 @@ function App() {
           <Login />
         </Route>
         <PrivateRoute exact path="/dashboard" component={Dashboard} friends={friends} setFriends={setFriends} />
-        <PrivateRoute exact path="/dashboard/addFriend" component={AddFriend} />
-        <PrivateRoute exact path="/dashboard/:friendId" component={FriendDetails} friends={friends} />
+        <PrivateRoute exact path="/dashboard/addFriend" component={AddFriend} setFriends={setFriends} />
+        <PrivateRoute exact path="/dashboard/:friendId" component={FriendDetails} setFriends={setFriends} />
         {/*Below acts as the default component when an invalid url is provided*/}
         <Route>
           <Login />

@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Friends App</h1>
+      <Title>Friends App</Title>
       <Switch>
         <Route exact path="/">
           <Login />
@@ -31,3 +32,9 @@ function App() {
 }
 
 export default App;
+
+const Title = styled.h1`
+  color: greenyellow;
+  text-align: right;
+  padding-right: 15px;
+`;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import styled from 'styled-components';
 
 const FriendCard = (props) => {
     const { url } = useRouteMatch();
@@ -7,13 +8,24 @@ const FriendCard = (props) => {
     const { friend } = props;
 
     return (
-        <div className="friendCard">
+        <Container className="friendCard">
             <h2>{friend.name}</h2>
-            <Link to={`${url}/${friend.id}`}>
+            <Link to={`${url}/${friend.id}`} style={{ textDecoration: 'none', fontStyle: 'italic' }}>
                 Get Details
             </Link>
-        </div>
+        </Container>
     )
 }
 
 export default FriendCard;
+
+const Container = styled.div`
+    border: 1px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+`
+
+
+//Characters Avatars used from : https://avatars.dicebear.com/docs/installation
+

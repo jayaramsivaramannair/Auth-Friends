@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import FriendCard from '../components/FriendCard';
 import { useHistory, Link } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from 'styled-components';
 
 const Dashboard = (props) => {
     const history = useHistory();
@@ -30,13 +31,12 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <div>
-                <button onClick={logout}>Logout</button>
-                <Link to="/dashboard/addFriend">
+            <Container>
+                <Link to="/dashboard/addFriend" style={{ textDecoration: 'none', color: 'black', border: '0.5px solid black', borderRadius: '5px', padding: '2px', backgroundColor: 'grey' }}>
                     Add a New Friend
                 </Link>
-            </div>
-            Hello from Dashboard!
+                <Button onClick={logout}>Logout</Button>
+            </Container>
             {friends &&
                 friends.map((friend) => {
                     return <FriendCard key={friend.id} friend={friend} />
@@ -47,3 +47,16 @@ const Dashboard = (props) => {
 }
 
 export default Dashboard;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+`
+
+const Button = styled.button`
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    font-family: 'Playfair Display', serif;
+`

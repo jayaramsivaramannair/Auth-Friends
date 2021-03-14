@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -27,10 +28,10 @@ const AddFriend = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={formSubmit}>
+        <Container>
+            <Form onSubmit={formSubmit}>
                 <label>Name:
-                    <input
+                    <FormInput
                         type="text"
                         placeholder="name"
                         value={newFriend.name}
@@ -39,7 +40,7 @@ const AddFriend = (props) => {
                     />
                 </label>
                 <label>Age:
-                    <input
+                    <FormInput
                         type="text"
                         placeholder="age"
                         value={newFriend.age}
@@ -48,7 +49,7 @@ const AddFriend = (props) => {
                     />
                 </label>
                 <label>Email:
-                    <input
+                    <FormInput
                         type="text"
                         placeholder="email"
                         value={newFriend.email}
@@ -56,11 +57,41 @@ const AddFriend = (props) => {
                         onChange={formChange}
                     />
                 </label>
-                <button>I Love Making Friends</button>
-            </form>
-            <button onClick={() => history.push('/dashboard')}>Back To Dashboard</button>
-        </div>
+                <Button>I Love Making Friends</Button>
+            </Form>
+            <Button onClick={() => history.push('/dashboard')}>Back To Dashboard</Button>
+        </Container>
     )
 }
 
 export default AddFriend;
+
+const Container = styled.div`
+    border: 1px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+`
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const Button = styled.button`
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    font-family: 'Playfair Display', serif;
+`
+
+const FormInput = styled.input`
+    margin: 5px;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 5px;
+`

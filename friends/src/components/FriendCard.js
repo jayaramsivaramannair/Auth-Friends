@@ -10,10 +10,12 @@ const FriendCard = (props) => {
     return (
         <Container className="friendCard">
             <h2>{friend.name}</h2>
-            <Link to={`${url}/${friend.id}`} style={{ textDecoration: 'none', fontStyle: 'italic' }}>
-                Get Details
+            <Link to={`${url}/${friend.id}`} style={{ textDecoration: 'none', fontStyle: 'italic', color: 'purple' }}>
+                Get More Details
             </Link>
-
+            <Link to={`${url}/updateFriend/${friend.id}`} style={{ textDecoration: 'none', fontStyle: 'italic', color: 'yellowgreen' }}>
+                Update Details
+            </Link>
         </Container>
     )
 }

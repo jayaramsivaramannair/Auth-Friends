@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import FriendDetails from "./components/FriendDetails";
 import AddFriend from "./components/AddFriend";
+import UpdateFriend from "./components/UpdateFriend";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <PrivateRoute exact path="/dashboard" component={Dashboard} friends={friends} setFriends={setFriends} />
         <PrivateRoute exact path="/dashboard/addFriend" component={AddFriend} setFriends={setFriends} />
         <PrivateRoute exact path="/dashboard/:friendId" component={FriendDetails} setFriends={setFriends} />
+        <PrivateRoute exact path="/dashboard/updateFriend/:friendId" component={UpdateFriend} setFriends={setFriends} />
         {/*Below acts as the default component when an invalid url is provided*/}
         <Route>
           <Login />

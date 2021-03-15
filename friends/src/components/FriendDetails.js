@@ -65,9 +65,20 @@ const Italicized = styled.span`
 
 const Button = styled.button`
     font-family: 'Playfair Display', serif;
+    border: 1px solid greenyellow;
+    background-color: white;
+    color: greenyellow;
+    font-weight: bold;
 `
 
 const DeleteLink = styled.a`
     text-decoration: none;
     font-style: italic;
+    border: 2px solid red;
+    display: inline-block;
+    padding: 2px;
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    margin: 2px;
 `
